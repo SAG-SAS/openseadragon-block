@@ -17,8 +17,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save() {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Openseadragon Imageviewer – hello from the saved content!' }
-		</p>
+		<div {...useBlockProps.save()}>
+			<div className="osd-container" style={{ width: '100%', height: '500px' }} data-image-url={attributes.imageUrl}></div>
+		</div>
 	);
 }

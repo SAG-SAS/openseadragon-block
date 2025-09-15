@@ -7,6 +7,7 @@ import { __ } from '@wordpress/i18n';
 
 import { useEffect, useRef } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
+import OpenSeadragon from 'openseadragon';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -37,7 +38,6 @@ export default function Edit() {
 	const osdRef = useRef(null);
 
 	const featuredImage = useSelect((select) => {
-		const postId = select('core/editor').getCurrentPostId();
 		const imageId = select('core/editor').getEditedPostAttribute('featured_media');
 		if (!imageId) return null;
 		return select('core').getMedia(imageId);
@@ -47,7 +47,7 @@ export default function Edit() {
 		if (featuredImage && osdRef.current) {
 			const viewer = OpenSeadragon({
 				element: osdRef.current,
-				prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/', // toolbar icons
+				prefixUrl: `${window.wp?.blockLibrary?.url || ""}../static/images/`,
 				tileSources: {
 					type: 'image',
 					url: featuredImage.source_url,
