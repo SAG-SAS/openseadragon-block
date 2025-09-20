@@ -1,17 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/openseadragon-imageviewer",
+	"name": "sag-sas/openseadragon-block",
 	"version": "0.1.0",
 	"title": "Openseadragon Imageviewer",
-	"category": "widgets",
+	"category": "media",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Zoomable image viewer using the open source OpenSeaDragon viewer with support for tiling images.",
 	"example": {},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "openseadragon-imageviewer",
+	"textdomain": "openseadragon-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
