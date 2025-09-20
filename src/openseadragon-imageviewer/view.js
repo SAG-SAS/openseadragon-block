@@ -20,23 +20,8 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-import OpenSeadragon from "openseadragon";
-
-document.addEventListener("DOMContentLoaded", () => {
-	document
-		.querySelectorAll(".wp-block-myplugin-openseadragon-block .osd-container")
-		.forEach((el) => {
-			const imageUrl = el.dataset.imageUrl;
-			if (imageUrl) {
-				OpenSeadragon({
-					element: el,
-					// WordPress automatically exposes the correct URL for block assets in /build or plugin root
-					prefixUrl: `${window.wp?.blockLibrary?.url || ""}../static/images/`,
-					tileSources: {
-						type: "image",
-						url: imageUrl,
-					},
-				});
-			}
-		});
-});
+/* eslint-disable no-console */
+console.log(
+	'Hello World! (from create-block-openseadragon-imageviewer block)'
+);
+/* eslint-enable no-console */

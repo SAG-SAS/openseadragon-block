@@ -1,7 +1,7 @@
 {
 	"core": "WordPress/WordPress",
 	"plugins": [
-		"."
+		"./src/openseadragon-imageviewer"
 	],
 	"config": {
 		"WP_DEBUG": true,
