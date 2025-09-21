@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				OpenSeadragon({
 					element: el,
 					prefixUrl:
-						MyOSDBlock.imagesUrl,
+						OSDBlock.imagesUrl,
 					tileSources: {
 						type: "image",
 						url: imageUrl,

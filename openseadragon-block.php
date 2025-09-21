@@ -25,52 +25,41 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 function create_block_openseadragon__block_block_init() {
-	/**
-	 * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
-	 * based on the registered block metadata.
-	 * Added in WordPress 6.8 to simplify the block metadata registration process added in WordPress 6.7.
-	 *
-	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
-	 */
-	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-		return;
-	}
-
-	/**
-	 * Registers the block(s) metadata from the `blocks-manifest.php` file.
-	 * Added to WordPress 6.7 to improve the performance of block type registration.
-	 *
-	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
-	 */
-	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-	}
-	/**
-	 * Registers the block type(s) in the `blocks-manifest.php` file.
-	 *
-	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
-	 */
-	$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
-	foreach ( array_keys( $manifest_data ) as $block_type ) {
-		register_block_type( __DIR__ . "/build/{$block_type}" );
-	}
+	register_block_type( __DIR__ . '/build/openseadragon-block' );
 }
 add_action( 'init', 'create_block_openseadragon__block_block_init' );
 
-function openseadragon_enqueue_view_assets() {
-    wp_enqueue_script(
-        'openseadragon-view',
-        plugins_url( 'build/openseadragon-block/view.js', __FILE__ ),
-        array(),
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/openseadragon-block/view.js' ),
-        true
-    );
-
-    // Pass PHP values into JS
-    wp_localize_script( 'openseadragon-view', 'MyOSDBlock', array(
-        'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
-        'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
-    ) );
-}
-add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );
+// function openseadragon_enqueue_view_assets() {
+//     wp_enqueue_script(
+//         'openseadragon-view',
+//         plugins_url( 'build/openseadragon-block/view.js', __FILE__ ),
+//         array(),
+//         filemtime( plugin_dir_path( __FILE__ ) . 'build/openseadragon-block/view.js' ),
+//         true
+//     );
+//
+//     // Pass PHP values into JS
+//     wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
+//         'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
+//         'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
+//     ) );
+// }
+// add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );
+//
+// function openseadragon_enqueue_editor_assets() {
+//     wp_enqueue_script(
+//         'openseadragon-editor',
+//         plugins_url( 'src/openseadragon-block/edit.js', __FILE__ ), // path to your edit.js / index.js
+//         array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+//         filemtime( plugin_dir_path( __FILE__ ) . 'src/openseadragon-block/edit.js' ),
+//         true
+//     );
+//
+//     wp_enqueue_style(
+//         'openseadragon-editor-style',
+//         plugins_url( 'index.css', __FILE__ ),
+//         array(),
+//         filemtime( plugin_dir_path( __FILE__ ) . 'index.css' )
+//     );
+// }
+// add_action( 'enqueue_block_editor_assets', 'openseadragon_enqueue_editor_assets' );

@@ -50,7 +50,7 @@ export default function Edit({ attributes, setAttributes }) {
 			const viewer = OpenSeadragon({
 				element: osdRef.current,
 				prefixUrl:
-					MyOSDBlock.imagesUrl,
+					OSDBlock.imagesUrl,
 				tileSources: {
 					type: "image",
 					url: featuredImage.source_url,
