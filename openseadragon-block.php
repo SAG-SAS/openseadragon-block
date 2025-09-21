@@ -57,3 +57,20 @@ function create_block_openseadragon__block_block_init() {
 	}
 }
 add_action( 'init', 'create_block_openseadragon__block_block_init' );
+
+function openseadragon_enqueue_view_assets() {
+    wp_enqueue_script(
+        'openseadragon-view',
+        plugins_url( 'build/openseadragon-block/view.js', __FILE__ ),
+        array(),
+        filemtime( plugin_dir_path( __FILE__ ) . 'build/openseadragon-block/view.js' ),
+        true
+    );
+
+    // Pass PHP values into JS
+    wp_localize_script( 'openseadragon-view', 'MyOSDBlock', array(
+        'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
+        'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
+    ) );
+}
+add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );

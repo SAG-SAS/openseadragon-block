@@ -5,11 +5,16 @@
 	"version": "0.1.0",
 	"title": "Openseadragon Imageviewer",
 	"category": "media",
-	"icon": "smiley",
+	"icon": "format-image",
 	"description": "Zoomable image viewer using the open source OpenSeaDragon viewer with support for tiling images.",
 	"example": {},
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"imageUrl": {
+			"type": "string"
+		}
 	},
 	"textdomain": "openseadragon-block",
 	"editorScript": "file:./index.js",

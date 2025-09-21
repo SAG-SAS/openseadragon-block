@@ -20,8 +20,26 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-/* eslint-disable no-console */
-console.log(
-	'Hello World! (from create-block-openseadragon-imageviewer block)'
-);
-/* eslint-enable no-console */
+import OpenSeadragon from "openseadragon";
+import metadata from "./block.json";
+
+const blockClass = "wp-block-" + metadata.name.replace("/", "-");
+
+document.addEventListener("DOMContentLoaded", () => {
+	document
+		.querySelectorAll(`.${blockClass} .osd-container`)
+		.forEach((el) => {
+			const imageUrl = el.dataset.imageUrl;
+			if (imageUrl) {
+				OpenSeadragon({
+					element: el,
+					prefixUrl:
+						MyOSDBlock.imagesUrl,
+					tileSources: {
+						type: "image",
+						url: imageUrl,
+					},
+				});
+			}
+		});
+});
