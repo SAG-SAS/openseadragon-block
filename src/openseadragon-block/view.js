@@ -33,8 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (imageUrl) {
 				OpenSeadragon({
 					element: el,
+					autoHideControls: false,
+					imageSmoothingEnabled: false,
+					showNavigator: false,
+					defaultZoomLevel: 0,
 					prefixUrl:
 						OSDBlock.imagesUrl,
+					visibilityRatio: 0.9,
 					tileSources: {
 						type: "image",
 						url: imageUrl,

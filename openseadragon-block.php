@@ -29,37 +29,11 @@ function create_block_openseadragon__block_block_init() {
 }
 add_action( 'init', 'create_block_openseadragon__block_block_init' );
 
-// function openseadragon_enqueue_view_assets() {
-//     wp_enqueue_script(
-//         'openseadragon-view',
-//         plugins_url( 'build/openseadragon-block/view.js', __FILE__ ),
-//         array(),
-//         filemtime( plugin_dir_path( __FILE__ ) . 'build/openseadragon-block/view.js' ),
-//         true
-//     );
-//
-//     // Pass PHP values into JS
-//     wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
-//         'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
-//         'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
-//     ) );
-// }
-// add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );
-//
-// function openseadragon_enqueue_editor_assets() {
-//     wp_enqueue_script(
-//         'openseadragon-editor',
-//         plugins_url( 'src/openseadragon-block/edit.js', __FILE__ ), // path to your edit.js / index.js
-//         array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
-//         filemtime( plugin_dir_path( __FILE__ ) . 'src/openseadragon-block/edit.js' ),
-//         true
-//     );
-//
-//     wp_enqueue_style(
-//         'openseadragon-editor-style',
-//         plugins_url( 'index.css', __FILE__ ),
-//         array(),
-//         filemtime( plugin_dir_path( __FILE__ ) . 'index.css' )
-//     );
-// }
-// add_action( 'enqueue_block_editor_assets', 'openseadragon_enqueue_editor_assets' );
+function openseadragon_enqueue_view_assets() {
+    // Pass PHP values into JS
+    wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
+        'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
+        'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
+    ) );
+}
+add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );

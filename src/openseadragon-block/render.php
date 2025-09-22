@@ -10,6 +10,6 @@ $post_id = get_the_ID() ?: 0;
 
 ?>
 <div <?php echo get_block_wrapper_attributes() ?>>
-	<div className="osd-container" style="width: 100%, height: 500px" data-image-url="<?php echo $image_url ?>"></div>
+	<div class="osd-container" style="width: 100%, height: 500px" data-image-url="<?php echo $image_url ?>"></div>
 </div>
 
