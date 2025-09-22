@@ -31,9 +31,9 @@ add_action( 'init', 'create_block_openseadragon__block_block_init' );
 
 function openseadragon_enqueue_view_assets() {
     // Pass PHP values into JS
-    wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
-        'imagesUrl' => plugins_url( 'src/', __FILE__ ),
-        'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
-    ) );
+    // wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
+    //     'iconsUrl' => plugins_url( 'src/osd-icons/', __FILE__ ),
+    //     'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
+    // ) );
 }
 add_action( 'enqueue_block_assets', 'openseadragon_enqueue_view_assets' );

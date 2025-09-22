@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					showNavigator: false,
 					defaultZoomLevel: 0,
 					prefixUrl:
-						OSDBlock.imagesUrl,
+						OSDBlock.iconsUrl,
 					visibilityRatio: 0.9,
 					tileSources: {
 						type: "image",

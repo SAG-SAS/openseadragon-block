@@ -14,6 +14,13 @@
 	"attributes": {
 		"imageUrl": {
 			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"useFeatured": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"textdomain": "openseadragon-block",
