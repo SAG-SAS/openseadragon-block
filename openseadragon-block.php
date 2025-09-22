@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 function create_block_openseadragon__block_block_init() {
-	register_block_type( __DIR__ . '/build/openseadragon-block' );
+	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'create_block_openseadragon__block_block_init' );
 
 function openseadragon_enqueue_view_assets() {
     // Pass PHP values into JS
     wp_localize_script( 'openseadragon-view', 'OSDBlock', array(
-        'imagesUrl' => plugins_url( 'src/openseadragon-block/osd-icons/', __FILE__ ),
+        'imagesUrl' => plugins_url( 'src/', __FILE__ ),
         'defaultImageUrl' => get_the_post_thumbnail_url( null, 'full' ), // Featured image fallback
     ) );
 }
